@@ -112,7 +112,6 @@
   }
   .hero-bg {
     position: absolute; inset: 0;
-    /* Removed the Unsplash photo and replaced with a dark gradient */
     background: linear-gradient(160deg, var(--charcoal) 0%, var(--black) 100%);
   }
   .hero::after {
@@ -196,7 +195,7 @@
     text-transform: uppercase; color: var(--silver);
     white-space: nowrap; font-weight: 500;
   }
-  .trust-icon { font-size: 1.3rem; flex-shrink: 0; color: var(--nu-yellow); }
+  .trust-icon { width: 22px; height: 22px; flex-shrink: 0; color: var(--nu-yellow); display: flex; align-items: center; justify-content: center; }
 
   /* ── SECTION BASE ── */
   section { padding: 6rem 5%; }
@@ -266,7 +265,8 @@
   .why-img-block img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .why-points { display: flex; flex-direction: column; gap: 2rem; }
   .why-pt { display: flex; gap: 1.5rem; align-items: flex-start; }
-  .why-pt-icon { flex-shrink: 0; width: 48px; height: 48px; background: linear-gradient(135deg, var(--nu-yellow), var(--nu-orange)); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: var(--black); border-radius: 3px;}
+  .why-pt-icon { flex-shrink: 0; width: 48px; height: 48px; background: linear-gradient(135deg, var(--nu-yellow), var(--nu-orange)); display: flex; align-items: center; justify-content: center; color: var(--black); border-radius: 3px;}
+  .why-pt-icon svg { width: 24px; height: 24px; }
   .why-pt-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.2rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); margin-bottom: 0.4rem; }
   .why-pt-text { font-size: 0.95rem; font-weight: 400; color: var(--silver); line-height: 1.75; }
 
@@ -308,7 +308,8 @@
     margin-bottom: 0.5rem; font-weight: 700;
   }
   .c-item { display: flex; gap: 1rem; align-items: flex-start; }
-  .c-icon { width: 42px; height: 42px; background: var(--iron); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: var(--nu-orange); border-radius: 50%;}
+  .c-icon { width: 42px; height: 42px; background: var(--iron); flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: var(--nu-orange); border-radius: 50%;}
+  .c-icon svg { width: 20px; height: 20px; }
   .c-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--smoke); margin-bottom: 0.2rem; }
   .c-val { font-size: 1.05rem; color: var(--white); text-decoration: none; font-weight: 500;}
   .c-val:hover { color: var(--nu-yellow); }
@@ -335,8 +336,17 @@
   footer { background: #050506; border-top: 1px solid var(--iron); padding: 3rem 5%; }
   .foot-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2rem; }
   
-  /* Added specific class for the footer logo image */
-  .footer-logo-img { height: 120px; width: auto; object-fit: contain; }
+  /* Styled Badge for the JPEG Logo */
+  .footer-logo-link {
+    background: var(--white);
+    padding: 12px 18px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  }
+  .footer-logo-img { height: 75px; width: auto; object-fit: contain; mix-blend-mode: multiply; }
   
   .foot-links { display: flex; gap: 2rem; flex-wrap: wrap; }
   .foot-links a { font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--smoke); text-decoration: none; transition: color 0.2s; font-weight: 500;}
@@ -368,6 +378,7 @@
       font-family: 'Barlow Condensed', sans-serif; font-size: 1.2rem; font-weight: 700;
       letter-spacing: 0.1em; text-transform: uppercase; color: var(--black);
       text-decoration: none; box-shadow: 0 -4px 15px rgba(0,0,0,0.4);
+      align-items: center; gap: 10px;
     }
 
     .hero { padding: 120px 5% 14%; }
@@ -381,8 +392,7 @@
     .form-row { grid-template-columns: 1fr; }
     .trust-bar { justify-content: flex-start; gap: 1.5rem;}
     
-    /* Responsive sizing for the logo */
-    .footer-logo-img { height: 90px; }
+    .footer-logo-img { height: 60px; }
   }
 </style>
 
@@ -452,15 +462,27 @@
   </div>
   <div class="hero-stats">
     <div class="stat"><div class="stat-num">13+</div><div class="stat-label">Years of Excellence</div></div>
-    <div class="stat"><div class="stat-num">5★</div><div class="stat-label">Google Rating</div></div>
+    <div class="stat"><div class="stat-num">5/5</div><div class="stat-label">Google Rating</div></div>
   </div>
 </section>
 
 <div class="trust-bar">
-  <div class="trust-item"><span class="trust-icon">🛡️</span> Licensed & Insured</div>
-  <div class="trust-item"><span class="trust-icon">📋</span> Insurance Specialists</div>
-  <div class="trust-item"><span class="trust-icon">⚡</span> 1-Day Installations</div>
-  <div class="trust-item"><span class="trust-icon">✅</span> Lifetime Integrity</div>
+  <div class="trust-item">
+    <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+    Licensed & Insured
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg></div>
+    Insurance Specialists
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></div>
+    1-Day Installations
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+    Lifetime Integrity
+  </div>
 </div>
 
 <section class="services" id="services">
@@ -507,26 +529,26 @@
   <div class="why-layout">
     <div class="why-img-wrap">
       <div class="why-img-block">
-        <img src="IMG_5893.jpg" loading="lazy">
+        <img src="IMG_5893.jpg" loading="lazy" alt="NuRoofing Logo Detail">
       </div>
     </div>
     <div class="why-points">
       <div class="why-pt">
-        <div class="why-pt-icon">🤝</div>
+        <div class="why-pt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
         <div>
           <div class="why-pt-title">He Fights For You</div>
           <div class="why-pt-text">Zico recently pushed back on a major carrier that denied a claim for five straight years—and got it fully approved. He ensures the job is scoped properly.</div>
         </div>
       </div>
       <div class="why-pt">
-        <div class="why-pt-icon">📞</div>
+        <div class="why-pt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></div>
         <div>
           <div class="why-pt-title">Direct Communication</div>
           <div class="why-pt-text">You aren't passed off to a call center. From the first inspection to the final walkthrough, Zico is your direct point of contact.</div>
         </div>
       </div>
       <div class="why-pt">
-        <div class="why-pt-icon">⚡</div>
+        <div class="why-pt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></div>
         <div>
           <div class="why-pt-title">Flawless Execution</div>
           <div class="why-pt-text">Our crews respect your property. We arrive on time, protect your landscaping, and sweep for nails multiple times before leaving.</div>
@@ -552,11 +574,11 @@
         210 N Ector Blvd<br>Euless, TX 76039
       </div>
       <div class="c-item">
-        <div class="c-icon">📞</div>
+        <div class="c-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></div>
         <div><div class="c-label">Call or Text</div><a href="tel:+16825034277" class="c-val">(682) 503-4277</a></div>
       </div>
       <div class="c-item">
-        <div class="c-icon">✉️</div>
+        <div class="c-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div>
         <div><div class="c-label">Email</div><a href="mailto:nuroofingtx@gmail.com" class="c-val">nuroofingtx@gmail.com</a></div>
       </div>
     </div>
@@ -590,7 +612,7 @@
 
 <footer>
   <div class="foot-inner">
-    <a href="#home">
+    <a href="#home" class="footer-logo-link">
       <img src="IMG_5893.jpg" alt="NuRoofing Logo" class="footer-logo-img">
     </a>
     <div class="foot-links">
@@ -604,7 +626,10 @@
   </div>
 </footer>
 
-<a href="tel:+16825034277" class="mobile-sticky-cta">📞 Tap to Call Zico</a>
+<a href="tel:+16825034277" class="mobile-sticky-cta">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+  Tap to Call Zico
+</a>
 
 <script>
   function toggleMenu() { document.getElementById('mobMenu').classList.toggle('open'); }
@@ -613,7 +638,7 @@
     e.preventDefault();
     const btn = document.getElementById('submit-btn');
     btn.textContent = 'Message Sent ✓';
-    btn.style.background = '#28a745'; // Green success color
+    btn.style.background = '#28a745'; 
     btn.style.color = 'white';
     btn.disabled = true;
   }
