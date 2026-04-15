@@ -112,9 +112,8 @@
   }
   .hero-bg {
     position: absolute; inset: 0;
-    background:
-      linear-gradient(160deg, rgba(10,10,12,0.3) 0%, rgba(10,10,12,0.95) 70%),
-      url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1800&q=80') center/cover no-repeat;
+    /* Removed the Unsplash photo and replaced with a dark gradient */
+    background: linear-gradient(160deg, var(--charcoal) 0%, var(--black) 100%);
   }
   .hero::after {
     content: ''; position: absolute;
@@ -335,6 +334,10 @@
   /* ── FOOTER ── */
   footer { background: #050506; border-top: 1px solid var(--iron); padding: 3rem 5%; }
   .foot-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2rem; }
+  
+  /* Added specific class for the footer logo image */
+  .footer-logo-img { height: 120px; width: auto; object-fit: contain; }
+  
   .foot-links { display: flex; gap: 2rem; flex-wrap: wrap; }
   .foot-links a { font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--smoke); text-decoration: none; transition: color 0.2s; font-weight: 500;}
   .foot-links a:hover { color: var(--nu-orange); }
@@ -377,6 +380,9 @@
     .why-img-wrap { display: none; }
     .form-row { grid-template-columns: 1fr; }
     .trust-bar { justify-content: flex-start; gap: 1.5rem;}
+    
+    /* Responsive sizing for the logo */
+    .footer-logo-img { height: 90px; }
   }
 </style>
 
@@ -584,7 +590,9 @@
 
 <footer>
   <div class="foot-inner">
-    <div class="nav-logo">Nu<em>Roofing</em></div>
+    <a href="#home">
+      <img src="IMG_5893.jpg" alt="NuRoofing Logo" class="footer-logo-img">
+    </a>
     <div class="foot-links">
       <a href="#services">Services</a>
       <a href="#why">Meet Zico</a>
